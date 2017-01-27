@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Scroll to top</title>
+	<style>
+		body{
+			height: 2000px;
+			background-color: #ddd;
+		}		
+		.show{
+			display: block!important;
+		}		
+		.hide{
+			display: none!important;
+		}
+		#back-to-top {
+		  width: 40px;
+		  height: 40px;
+		  background: #39B4E3;
+		  color: #fff;
+		  font-size: 22px;
+		  text-align: center;
+		  position: fixed;
+		  bottom: 20px;
+		  right: 20px;
+		  cursor: pointer;
+		  display: none;
+		  -moz-border-radius: 5px;
+		  -webkit-border-radius: 5px;
+		  border-radius: 5px;
+		  padding: 5px 10px;
+		}
+	</style>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(function(){
+			if ($('#back-to-top').length) {
+		        var scrollTrigger = 100, // px
+		            backToTop = function () {
+		                var scrollTop = $(window).scrollTop();
+		                if (scrollTop > scrollTrigger) {
+		                    $('#back-to-top').addClass('show');
+		                } else {
+		                    $('#back-to-top').removeClass('show');
+		                }
+		            };
+		        backToTop();
+		        $(window).on('scroll', function () {
+		            backToTop();
+		        });
+		        $('#back-to-top').on('click', function (e) {
+		            e.preventDefault();
+		            $('html,body').animate({
+		                scrollTop: 0
+		            }, 700);
+		        });
+		    }
+		})
+	</script>
+</head>
+<body>
+	
+	<!-- <div id="back-to-top"><i class="fa fa-arrow-up" aria-hidden="true"></i></div> -->
+	<div id="back-to-top">&uarr;</div>
+</body>
+</html>
